@@ -40,6 +40,7 @@ export const Faq: React.FC = () => {
               >
                 <button
                   type="button"
+                  id={`faq-question-${faq.id}`}
                   onClick={() => toggleFaq(faq.id)}
                   aria-expanded={isExpanded}
                   aria-controls={`faq-answer-${faq.id}`}

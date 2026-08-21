@@ -11,20 +11,19 @@ const iconMap = {
   Building2: Building2,
 };
 
-export const Services: React.FC = () => {
+export interface ServicesProps {
+  onSelectService?: (serviceId: string) => void;
+}
+
+export const Services: React.FC<ServicesProps> = ({ onSelectService }) => {
   const handleLearnMoreClick = (serviceId: string) => {
-    const quoteSection = document.querySelector('#quote');
-    if (quoteSection) {
-      quoteSection.scrollIntoView({ behavior: 'smooth' });
-      // Dispatch a custom event or trigger select change
-      setTimeout(() => {
-        const selectElement = document.querySelector('#cleaningType') as HTMLSelectElement;
-        if (selectElement) {
-          selectElement.value = serviceId;
-          const event = new Event('change', { bubbles: true });
-          selectElement.dispatchEvent(event);
-        }
-      }, 300);
+    if (onSelectService) {
+      onSelectService(serviceId);
+    } else {
+      const quoteSection = document.querySelector('#quote');
+      if (quoteSection) {
+        quoteSection.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Hero } from '../components/Hero';
 import { Services } from '../components/Services';
 import { WhyUs } from '../components/WhyUs';
@@ -9,15 +9,25 @@ import { Contact } from '../components/Contact';
 import { FinalCta } from '../components/FinalCta';
 
 export const HomePage: React.FC = () => {
+  const [selectedService, setSelectedService] = useState<string>('regular-home-cleaning');
+
+  const handleSelectService = (serviceId: string) => {
+    setSelectedService(serviceId);
+    const quoteSection = document.querySelector('#quote');
+    if (quoteSection) {
+      quoteSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <>
       <Hero />
-      <Services />
+      <Services onSelectService={handleSelectService} />
       <WhyUs />
       <HowItWorks />
       <Testimonials />
       <Faq />
-      <Contact />
+      <Contact selectedService={selectedService} onServiceChange={setSelectedService} />
       <FinalCta />
     </>
   );

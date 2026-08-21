@@ -8,6 +8,7 @@ export const AppRoutes: React.FC = () => {
     <MainLayout>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<HomePage />} />
       </Routes>
     </MainLayout>
   );

@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Button, Card, Badge } from '../ui';
 import { CONTACT_INFO } from '../../constants/theme';
 import { Mail, Phone, Clock, CheckCircle2, AlertCircle, Send, Shield, RefreshCw } from 'lucide-react';
 import { QuoteFormData, QuoteFormErrors } from '../../types';
 
-export const Contact: React.FC = () => {
+export interface ContactProps {
+  selectedService?: string;
+  onServiceChange?: (service: string) => void;
+}
+
+export const Contact: React.FC<ContactProps> = ({ selectedService, onServiceChange }) => {
   const [formData, setFormData] = useState<QuoteFormData>({
     fullName: '',
     email: '',
     phone: '',
-    cleaningType: 'regular-home-cleaning',
+    cleaningType: selectedService || 'regular-home-cleaning',
     preferredDate: '',
     message: '',
   });
@@ -17,6 +22,15 @@ export const Contact: React.FC = () => {
   const [errors, setErrors] = useState<QuoteFormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+
+  useEffect(() => {
+    if (selectedService) {
+      setFormData((prev) => ({ ...prev, cleaningType: selectedService }));
+      setErrors((prev) => ({ ...prev, cleaningType: undefined }));
+    }
+  }, [selectedService]);
+
+  const todayStr = new Date().toISOString().split('T')[0];
 
   const validate = (): boolean => {
     const newErrors: QuoteFormErrors = {};
@@ -43,6 +57,8 @@ export const Contact: React.FC = () => {
 
     if (!formData.preferredDate) {
       newErrors.preferredDate = 'Please select a preferred date.';
+    } else if (formData.preferredDate < todayStr) {
+      newErrors.preferredDate = 'Preferred date cannot be in the past.';
     }
 
     setErrors(newErrors);
@@ -54,6 +70,9 @@ export const Contact: React.FC = () => {
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (name === 'cleaningType' && onServiceChange) {
+      onServiceChange(value);
+    }
     if (errors[name as keyof QuoteFormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -81,6 +100,9 @@ export const Contact: React.FC = () => {
       preferredDate: '',
       message: '',
     });
+    if (onServiceChange) {
+      onServiceChange('regular-home-cleaning');
+    }
     setErrors({});
     setIsSuccess(false);
   };
@@ -317,6 +339,7 @@ export const Contact: React.FC = () => {
                       id="preferredDate"
                       name="preferredDate"
                       type="date"
+                      min={todayStr}
                       value={formData.preferredDate}
                       onChange={handleChange}
                       className={`w-full bg-slate-950 border rounded-lg px-4 py-3 text-white text-sm focus:outline-none transition-colors min-h-[44px] ${

@@ -1,8 +1,16 @@
 # BrightNest Cleaning — Responsive Service Business Website
 
-A modern, conversion-focused, responsive business website built for a residential and small office cleaning service. Designed with a mobile-first responsive layout, accessible UI primitives, smooth section navigation, and an interactive quote request workflow.
+[![Live Demo](https://img.shields.io/badge/Live_Demo-GitHub_Pages-10b981?style=for-the-badge&logo=github)](https://nabilanawrosenaomi.github.io/brightnest-cleaning-website/)
+[![React 18](https://img.shields.io/badge/React-18-blue?style=flat-square&logo=react)](https://reactjs.org/)
+[![TypeScript 5](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![Vite 6](https://img.shields.io/badge/Vite-6-purple?style=flat-square&logo=vite)](https://vitejs.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v3-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
 
-> **Portfolio Disclaimer**: BrightNest Cleaning is a fictional portfolio demo created to demonstrate frontend web development, responsive UI implementation, and user experience design. The quote request form is frontend-only; no real customer data is collected, and no real requests are sent. In a live production environment, this form can be integrated with a CRM, email service, or booking management backend.
+A modern, conversion-focused, responsive business website built for a residential and small office cleaning service. Designed with a mobile-first layout, accessible UI primitives, smooth section navigation, structured SEO metadata, and an interactive quote request workflow.
+
+🔗 **Live Demo URL**: [https://nabilanawrosenaomi.github.io/brightnest-cleaning-website/](https://nabilanawrosenaomi.github.io/brightnest-cleaning-website/)
+
+> **Portfolio Disclaimer**: BrightNest Cleaning is a fictional portfolio project created to demonstrate frontend web development, responsive UI implementation, and conversion-focused user experience design. The quote request form is frontend-only; in a production deployment, this form can be integrated with any CRM, email service (e.g. Resend, SendGrid), or booking management backend.
 
 ---
 
@@ -14,25 +22,24 @@ A modern, conversion-focused, responsive business website built for a residentia
 
 ---
 
-## Key Features
+## Business & Client Value Highlights
 
-* **Responsive Design**: Mobile-first architecture tested across 360px, 390px, 430px, 768px, 1024px, 1280px, and 1440px viewports without horizontal overflow.
-* **Interactive Quote Form**: Real-time frontend validation, inline error messaging, submission state handling, demo success notifications, and a form reset action for continuous testing.
-* **Service Selection Integration**: Clicking "Request Quote For This" on any service card automatically scrolls to the quote form and pre-selects the relevant service module in the select dropdown.
-* **Accessible FAQ Accordion**: Single-expansion accordion component built with accessible keyboard navigation (`aria-expanded`, `aria-controls`).
-* **Mobile Navigation Drawer**: Accessible slide-down menu drawer that automatically closes upon section link or CTA navigation.
-* **Smooth Scrolling & Active Section Tracking**: Seamless section jumping with real-time active link highlighting as the user scrolls.
-* **Accessibility Polish**: Keyboard focus indicators (`focus-visible`), touch targets $\ge 44\text{px}$, and semantic HTML5 layout tags.
+* **Conversion-Driven Funnel**: Prominent call-to-action triggers in the header, hero, service cards, and sticky navigation funnel prospective clients directly into the quote request workflow.
+* **Interactive Service Selection**: Clicking "Request Quote For This" on any service card automatically scrolls to the quote form and pre-selects the corresponding service in the controlled React form state.
+* **Smart Validation & Date Restrictions**: Real-time frontend validation prevents submission of empty fields, invalid emails/phones, or past dates with clear inline error messaging.
+* **Search Engine & Local SEO Ready**: Pre-configured with Open Graph social metadata, Twitter Cards, and valid `Schema.org` `CleaningService` / `LocalBusiness` JSON-LD structured data.
+* **Accessibility Polish (WCAG Compliant)**: Full keyboard navigation support, high-contrast focus rings (`focus-visible`), touch targets $\ge 44\text{px}$, and valid ARIA associations (`aria-controls`, `aria-labelledby`, `aria-expanded`).
+* **Clean & Extensible React Architecture**: Built with modular components, unified Tailwind design tokens, and strict TypeScript types with zero `any` usage.
 
 ---
 
 ## Tech Stack
 
 * **React 18** — Component-driven UI library
-* **TypeScript 5** — Type-safe code compilation
-* **Vite 6** — Fast build tool and dev server
+* **TypeScript 5** — Type-safe compilation and strict typing
+* **Vite 6** — Modern, high-performance frontend build tool
 * **Tailwind CSS v3** — Utility-first styling framework with PostCSS & Autoprefixer
-* **Lucide React** — Modern SVG icon library
+* **Lucide React** — Crisp SVG icon system
 
 ---
 
@@ -61,4 +68,9 @@ A modern, conversion-focused, responsive business website built for a residentia
 5. **Build for production**:
    ```bash
    npm run build
+   ```
+
+6. **Preview the production build locally**:
+   ```bash
+   npm run preview
    ```
